@@ -1,0 +1,292 @@
+@import "~normalize.css";
+@import "~antd/dist/antd.css";
+/* 样式的重置 */
+
+body, html, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, header, menu, section, p, input, td, th, ins {
+  padding: 0;
+  margin: 0;
+}
+
+ul, ol, li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #666;
+}
+
+a:hover {
+  color: #666;
+  text-decoration: underline;
+}
+
+i, em {
+  font-style: normal;
+}
+
+input, textarea, button, select, a {
+  outline: none;
+  border: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+img {
+  border: none;
+  vertical-align: middle;
+}
+
+/* 全局样式 */
+
+body, textarea, select, input, button {
+  font-size: 12px;
+  color: #333;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f5f5f5;
+}
+
+/* 文字内容过多时显示... */
+
+.text-nowrap {
+  /* 规定段落中的文本不进行换行 */
+  white-space: nowrap;
+  /* 规定当文本溢出包含元素时发生的事情 */
+  text-overflow: ellipsis;
+  /* 规定当内容溢出元素框时发生的事情 */
+  overflow: hidden;
+}
+
+.wrap-v1 {
+  width: 1100px;
+  margin: 0 auto;
+}
+
+.wrap-v2 {
+  width: 980px;
+  margin: 0 auto;
+}
+
+.phone {
+  background: url(../img/phone.png) no-repeat 0 9999px;
+}
+
+.mask {
+  background: url(../img/mask.png) no-repeat 0 9999px;
+}
+
+.download {
+  background: url(../img/download.png) no-repeat 0 9999px;
+}
+
+.banner_sprite{
+  background: url(../img/banner_sprite.png) no-repeat 0 9999px;
+}
+
+.platform {
+  background: url(../img/platform.png) no-repeat 0 9999px;
+}
+
+.logo {
+  background: url(../img/logo.png) no-repeat 0 9999px;
+}
+
+.qr_login_icon {
+  background: url(../img/qr_login_icon.png) no-repeat 0 9999px;
+}
+
+.sprite_01 {
+  background: url(../img/sprite_01.png) no-repeat 0 9999px;
+}
+
+.sprite_02 {
+  background: url(../img/sprite_02.png) no-repeat 0 9999px;
+}
+
+.sprite_covor {
+  background: url(../img/sprite_cover.png) no-repeat 0 9999px;
+}
+
+.sprite_icon {
+  background: url(../img/sprite_icon.png) no-repeat 0 9999px;
+}
+
+.sprite_icon2 {
+  background: url(../img/sprite_icon2.png) no-repeat 0 9999px;
+}
+
+.sprite_icon3 {
+  background: url(../img/sprite_icon3.png) no-repeat 0 9999px;
+}
+
+.sprite_button {
+  background: url(../img/sprite_button.png) no-repeat 0 9999px;
+}
+
+.sprite_button2 {
+  background: url(../img/sprite_button2.png) no-repeat 0 9999px;
+}
+
+.sprite_table {
+  background: url(../img/sprite_table.png) no-repeat 0 9999px;
+}
+
+.playbar_sprite {
+  background: url(../img/playbar_sprite.png) no-repeat 0 9999px;
+}
+
+.icon-single {
+  background: url(../img/icon.png) no-repeat 0 9999px;
+}
+
+.wrap-bg {
+  background: url(../img/wrap-bg.png) no-repeat 0 9999px;
+}
+
+.mymusic {
+  background: url(../img/mymusic.png) no-repeat 0 9999px;
+}
+
+.notlogin {
+  background: url(../img/notlogin.png) no-repeat 0 9999px;
+}
+
+.menu-button {
+  background: url(../img/menu-button.png) no-repeat 0 9999px;
+}
+
+.image_cover {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  text-indent: -9999px;
+  background: url(../img/sprite_cover.png) no-repeat -145px -57px;
+}
+
+.sprite_player {
+  background: url(../img/playbar_sprite.png) no-repeat 0 9999px;
+}
+
+.message {
+  background: url(../img/message.png) no-repeat 0 9999px;
+}
+
+.message-icon {
+  background: url(../img/message-icon.png) no-repeat 0 9999px;
+}
+
+.tab {
+  background: url(../img/tab.png) 0 9999px;
+}
+
+.iconall {
+  background: url(../img/iconall.png) 0 9999px;
+}
+
+.lyric-class .ant-message-notice-content {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 50px;
+  background-color: rgba(0, 0, 0, .5);
+  color: #fff;
+}
+
+.lyric .ant-message-notice-content {
+  position: fixed;
+  color: #fff;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, .5);
+}
+
+.icon1 {
+  background: url(../img/icons/icon1.png) no-repeat 0 9999px;
+}
+
+.icon2 {
+  background: url(../img/icons/icon2.png) no-repeat 0 9999px;
+}
+
+.icon3 {
+  background: url(../img/icons/icon3.png) no-repeat 0 9999px;
+}
+
+.icon4 {
+  background: url(../img/icons/icon4.png) no-repeat 0 9999px;
+}
+
+.icon5 {
+  background: url(../img/icons/icon5.png) no-repeat 0 9999px;
+}
+
+.icon6 {
+  background: url(../img/icons/icon6.png) no-repeat 0 9999px;
+}
+
+.icon7 {
+  background: url(../img/icons/icon7.png) no-repeat 0 9999px;
+}
+
+.icon8 {
+  background: url(../img/icons/icon8.png) no-repeat 0 9999px;
+}
+
+.icon9 {
+  background: url(../img/icons/icon9.png) no-repeat 0 9999px;
+}
+
+.icon10 {
+  background: url(../img/icons/icon10.png) no-repeat 0 9999px;
+}
+
+.icon11 {
+  background: url(../img/icons/icon11.png) no-repeat 0 9999px;
+}
+
+.icon12 {
+  background: url(../img/icons/icon12.png) no-repeat 0 9999px;
+}
+
+.icon13 {
+  background: url(../img/icons/icon13.png) no-repeat 0 9999px;
+}
+
+.icon14 {
+  background: url(../img/icons/icon14.png) no-repeat 0 9999px;
+}
+
+.icon15 {
+  background: url(../img/icons/icon15.png) no-repeat 0 9999px;
+}
+
+.icon16 {
+  background: url(../img/icons/icon16.png) no-repeat 0 9999px;
+}
+
+.icon17 {
+  background: url(../img/icons/icon17.png) no-repeat 0 9999px;
+}
+
+.icon18 {
+  background: url(../img/icons/icon18.png) no-repeat 0 9999px;
+}
+
+.icon19 {
+  background: url(../img/icons/icon19.png) no-repeat 0 9999px;
+}
+
+.icon20 {
+  background: url(../img/icons/icon20.png) no-repeat 0 9999px;
+}
+
+.radio_slide {
+  background: url(../img/radio_slide.png) no-repeat 0 9999px;
+  color: #5ab5e7;
+}

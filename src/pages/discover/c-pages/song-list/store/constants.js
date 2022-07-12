@@ -1,0 +1,7 @@
+export const CHANGE_SONG_LIST_DETAIL = "song-list/CHANGE_SONG_LIST_DETAIL"
+
+export const CHANGE_SONG_LIST_COMMENTS = "song-list/CHANGE_SONG_LIST_COMMENTS"
+
+export const CHANGE_COMMENT_LIKE ="song-list/CHANGE_COMMENT_LIKE"
+
+export const CHANGE_COMMENT = "song-list/CHANGE_COMMENT"
