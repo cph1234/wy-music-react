@@ -65,8 +65,14 @@ export const HeaderWrapper = styled.div`
           text-align:center;
         }
         .center-right-center{
+          display: flex;
           height: 130px;
           margin:10px 0;
+          justify-content:center;
+          img{
+            width: 128px;
+            height: 128px;
+          }
         }
         .center-right-bottom{
           font-size:12px;

@@ -42,6 +42,15 @@ export function settleSinger(limit) {
   })
 }
 
+export function getUserAccount() {
+  return request({
+    url: "/user/account",
+    params: {
+      cookie: localStorage.getItem("cookie")
+    }
+  })
+}
+
 export function getUserInformation(uid) {
   return request({
     url: "/user/detail",

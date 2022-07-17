@@ -17,14 +17,15 @@ import { useRef } from 'react';
 
 
 export default memo(function PHAppHeader(props) {
-  const { errMessage, loginSuccess, userInformation, searchSuggest, searchKeyWord
-  } = useSelector(state => ({
-    errMessage: state.get("recommend").get("errMessage"),
-    loginSuccess: state.get("recommend").get("loginSuccess"),
-    userInformation: state.get("recommend").get("userInformation"),
-    searchSuggest: state.get("recommend").get("searchSuggest"),
-    searchKeyWord: state.get("search").get("searchKeyWord")
-  }), shallowEqual)
+  const { errMessage, loginSuccess, userInformation,
+    searchSuggest, searchKeyWord, qrCreate } = useSelector(state => ({
+      errMessage: state.get("recommend").get("errMessage"),
+      loginSuccess: state.get("recommend").get("loginSuccess"),
+      userInformation: state.get("recommend").get("userInformation"),
+      searchSuggest: state.get("recommend").get("searchSuggest"),
+      searchKeyWord: state.get("search").get("searchKeyWord"),
+      qrCreate: state.get("recommend").get("qrCreate")
+    }), shallowEqual)
 
   const [login, setlogin] = useState(false);
   const [loginWay, setloginWay] = useState(true)
@@ -39,6 +40,7 @@ export default memo(function PHAppHeader(props) {
   const dispatch = useDispatch()
   const inputConfirm = useRef(false);
   const history = useHistory()
+  const qrimg = qrCreate && qrCreate.data && qrCreate.data.qrimg
   // useEffect(() => {
   //   dispatch(getCellphoneAction(17854298582, "cph971010"))
   // }, [dispatch])
@@ -54,7 +56,7 @@ export default memo(function PHAppHeader(props) {
   useEffect(() => {
     setsearchKey(searchKeyWord)
   }, [searchKeyWord])
-  
+
   const avatar = userInformation && userInformation.profile && userInformation.profile.avatarUrl;
   const isLogin = () => {
     setlogin(!login)
@@ -149,7 +151,9 @@ export default memo(function PHAppHeader(props) {
                     <div className="center-left phone"></div>
                     <div className="center-right">
                       <div className="center-right-top">扫码登录</div>
-                      <div className="center-right-center"></div>
+                      <div className="center-right-center">
+                        <img src={qrimg} alt="" />
+                      </div>
                       <div className="center-right-bottom">
                         使用<a href="todo">网易云音乐App</a>扫码登录
                       </div>
@@ -245,7 +249,7 @@ export default memo(function PHAppHeader(props) {
 
                   {!loginWayPhones &&
                     <div className='captcha'>
-                      <input type="password" placeholder="请输入验证码" autocomplete="off"
+                      <input type="text" placeholder="请输入验证码" autocomplete="off"
                         οnfοcus="this.placeholder=''" οnblur="this.placeholder='请输入验证码'"
                         onChange={e => getCaptcha(e)} />
                       <button className='btn1 sprite_button' onClick={e => sendCaptcha()}>获取验证码</button>

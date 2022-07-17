@@ -14,6 +14,8 @@ export const CHANGE_SETTLE_SINGER = "recommend/CHANGE_SETTLE_SINGER";
 
 export const CHANGE_QR_CREATE = "recommend/CHANGE_QR_CREATE";
 
+export const CHANGE_QR_CHECK = "recommend/CHANGE_QR_CHECk";
+
 export const CHANGE_CELLPHONE = "recommend/CHANGE_CELLPHONE";
 
 export const ERR_MESSAGE = "recommend/ERR_MESSAGE";

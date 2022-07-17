@@ -12,6 +12,7 @@ const initState = Map({
 
   settleSinger: [],
   qrCreate: "",
+  qrCheck:{},
   cellphone: {},
   errMessage: "",
   loginSuccess: true,
@@ -40,6 +41,8 @@ function reducer(state = initState, action) {
       return state.set("settleSinger", action.settleSinger)
     case actionTypes.CHANGE_QR_CREATE:
       return state.set("qrCreate", action.qrCreate)
+    case actionTypes.CHANGE_QR_CHECK:
+      return state.set("qrCheck", action.qrCheck)
     case actionTypes.CHANGE_CELLPHONE:
       return state.set("cellphone", action.cellphone)
     case actionTypes.ERR_MESSAGE:

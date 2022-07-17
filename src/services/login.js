@@ -18,6 +18,17 @@ export function getQrCreate(key) {
   })
 }
 
+export function getQrCheck(key) {
+  return request({
+    method: "post",
+    url: `/login/qr/check?timerstamp=${Date.now()}`,
+    withCredentials: true, //关键
+    params:{
+      key
+    }
+  })
+}
+
 //手机登录
 export function getCellphone(phone, password) {
   return request({
@@ -38,9 +49,10 @@ export function getCaptchaSent(phone) {
   })
 }
 //验证验证码
-export function getCaptchaVerify(phone,captcha) {
+export function getCaptchaVerify(phone,password=null,captcha) {
+  console.log(captcha);
   return request({
-    url: "/captcha/verify",
+    url: "/login/cellphone",
     params: {
       phone,
       captcha

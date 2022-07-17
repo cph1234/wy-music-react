@@ -1,7 +1,7 @@
 import * as actionTypes from './constants';
 
-import { getTopBanners, getHotRecommends, getNewAlbum, getTopList, settleSinger, getUserInformation, getVip } from '@/services/recommend';
-import { getQrKey, getQrCreate, getCellphone, getCaptchaSent, getCaptchaVerify } from '@/services/login'
+import { getTopBanners, getHotRecommends, getNewAlbum, getTopList, settleSinger, getUserAccount, getUserInformation, getVip } from '@/services/recommend';
+import { getQrKey, getQrCheck, getQrCreate, getCellphone, getCaptchaSent, getCaptchaVerify } from '@/services/login'
 import { getSignin } from '@/services/user'
 import { getSearchContent, getSearchSuggest } from '@/services/search'
 import storageUtils from '@/utils/storage'
@@ -106,15 +106,72 @@ export const changeSettleSingerAction = res => ({
 export const getQrCreateAction = () => {
   return dispatch => {
     getQrKey().then(res => {
-      console.log(res)
-      getQrCreate(res).then(res2 => {
-        console.log(res2)
+      // console.log(res.data.unikey)
+      getQrCreate(res.data.unikey).then(res2 => {
+        // console.log(res2)
         dispatch(changeQrCreateAction(res2))
       })
+      //获取状态
+      let timer = setInterval(async () => {
+        const statusRes = await getQrCheck(res.data.unikey)
+        if (statusRes.code === 800) {
+          // alert('二维码已过期,请重新获取')
+          clearInterval(timer)
+        }
+        if (statusRes.code === 803) {
+          // 这一步会返回cookie
+          clearInterval(timer)
+          // alert('授权登录成功')
+          dispatch(changeQrCheckAction(statusRes))
+          // console.log(statusRes);
+          dispatch(errMessageAction(("")))
+          dispatch(loginSuccessAction(false))
+          localStorage.setItem('cookie', statusRes.cookie)
+          let userAccount=await getUserAccount()
+          console.log(userAccount);
+          dispatch(getUserInformationAction(userAccount.account.id))
+          // storageUtils.saveUser(res)
+        }
+      }, 3000)
+      // getQrCheck(res.data.unikey).then(res => {
+      //   //800 为二维码过期,801 为等待扫码,802 为待确认,803 为授权登录成功
+      //   let flag = true
+      //   console.log(res);
+      //   while (flag) {
+      //     if (res.code === 800) {
+      //       getQrCreateAction()
+      //       flag = false
+      //     } else if (res.code === 801) {
+      //       setTimeout(() => {
+      //         console.log('801,100ms', res);
+      //       }, 1000)
+      //     } else if (res.code === 802) {
+      //       setTimeout(() => {
+      //         console.log('802,100ms', res);
+      //       }, 1000)
+      //     } else if (res.code === 803) {
+      //       console.log(res);
+      //       dispatch(changeQrCheckAction(res))
+      //       flag = false
+      //     }
+      //   }
+      // })
     })
   }
 }
 
+// export const getQrCheckAction = (key) => {
+//   return dispatch => {
+//     getQrCheck(key).then(res => {
+//       dispatch(changeQrCheckAction(res))
+//     })
+//   }
+// }
+
+export const changeQrCheckAction = res => ({
+  type: actionTypes.CHANGE_QR_CHECK,
+  qrCheck: res
+})
 export const changeQrCreateAction = res => ({
   type: actionTypes.CHANGE_QR_CREATE,
   qrCreate: res
@@ -124,6 +181,7 @@ export const getCellphoneAction = (phone, password) => {
   let flag = false;
   return dispatch => {
     getCellphone(phone, password).then(res => {
+      console.log(res);
       if (phone.length === 0) {
         dispatch(errMessageAction("请输入手机号"))
       } else if (password.length === 0) {
@@ -216,7 +274,7 @@ export const getCaptchaSentAction = (phone) => {
 
 export const getCaptchaVerifyAction = (phone, captcha) => {
   return dispatch => {
-    getCaptchaVerify(phone, captcha)
+    getCaptchaVerify(phone, null, captcha)
   }
 }
 
