@@ -61,7 +61,7 @@ export default memo(function PHAlbumList(props) {
     if (flag) r.push(array[i]);
   }
   const subscribers = r.slice(0, 8);
-  console.log(array);
+  // console.log(SingerAlbum);
   // console.log(playlist && playlist.tracks);
   const index = playlists && playlists.findIndex(value => (value.id === props.location.id))
   if (playlists) {
@@ -146,7 +146,7 @@ export default memo(function PHAlbumList(props) {
           <div className="lover-img">
             {
               subscribers && subscribers.map((item, index) => {
-                return <img src={getSizeImage(item.user.avatarUrl, 40)} alt="" className="lover-item" key={item.id} />
+                return <img src={getSizeImage(item.user.avatarUrl, 40)} alt="" className="lover-item" key={item.commentId} />
               })
             }
           </div>

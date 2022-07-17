@@ -24,6 +24,7 @@ export default memo(function App() {
   const dispatch = useDispatch();
 
   const user = storageUtils.getUser();
+  
   useEffect(() => {
     if (user.account !== undefined) {
       dispatch(errMessageAction(("")))

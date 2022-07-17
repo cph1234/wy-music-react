@@ -19,7 +19,7 @@ export const WrapperLoginSuccess = styled.div`
       }
     }
     .top-right{
-      margin-left:20px;
+      margin-left:15px;
       .right-top{
         a{
           font-size:14px;

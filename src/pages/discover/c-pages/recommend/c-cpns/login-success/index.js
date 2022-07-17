@@ -17,7 +17,8 @@ export default memo(function PHLoginSuccess() {
   // }, [dispatch])
   const avatar = userInformation && userInformation.profile && userInformation.profile.avatarUrl
   const nickname = userInformation && userInformation.profile && userInformation.profile.nickname
-  const uVipLevel = (userInformation && userInformation.level) || 1;
+  // const uVipLevel = (userInformation && userInformation.level) || 2;
+  const uVipLevel = 2;
   const vipUrl = vipLevel[uVipLevel - 1].url;
   const eventCount = userInformation && userInformation.profile && userInformation.profile.eventCount;
   const follows = userInformation && userInformation.profile && userInformation.profile.follows;

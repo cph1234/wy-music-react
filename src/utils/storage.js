@@ -5,11 +5,12 @@ import store from 'store'
 const USER_KEY = 'user_key'
 const storage = {
   //保存
-  saveUser(user) {
+  saveUser(user,cookie) {
     // localStorage.setItem(USER_KEY,JSON.stringify(user))
     store.set(USER_KEY, user)
-    localStorage.setItem('accessToken', user.token);
-    localStorage.setItem('cookie', encodeURIComponent(user.cookie));
+    // localStorage.setItem('accessToken', user.token);
+    // localStorage.setItem('cookie', encodeURIComponent(cookie));
+    // localStorage.setItem('cookie', cookie);
   },
   //读取
   getUser() {
@@ -20,7 +21,7 @@ const storage = {
   deleteUser() {
     // localStorage.removeItem(USER_KEY)
     store.remove(USER_KEY)
-    localStorage.removeItem("accessToken");
+    // localStorage.removeItem("accessToken");
     localStorage.removeItem("cookie");
   }
 }

@@ -130,7 +130,8 @@ export const getQrCreateAction = () => {
           let userAccount=await getUserAccount()
           console.log(userAccount);
           dispatch(getUserInformationAction(userAccount.account.id))
-          // storageUtils.saveUser(res)
+          storageUtils.saveUser(userAccount, statusRes.cookie)
+          
         }
       }, 3000)
       // getQrCheck(res.data.unikey).then(res => {

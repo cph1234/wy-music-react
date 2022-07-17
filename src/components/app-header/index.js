@@ -55,6 +55,11 @@ export default memo(function PHAppHeader(props) {
   }
   useEffect(() => {
     setsearchKey(searchKeyWord)
+    // const cookie=localStorage.getItem('cookie')
+    // // console.log(cookie);
+    // if(cookie!==null){
+    //   dispatch(loginSuccessAction(false))
+    // }
   }, [searchKeyWord])
 
   const avatar = userInformation && userInformation.profile && userInformation.profile.avatarUrl;
@@ -90,6 +95,7 @@ export default memo(function PHAppHeader(props) {
   }
   const loginOff = () => {
     dispatch(loginSuccessAction(true))
+    // localStorage.removeItem("cookie");
     storageUtils.deleteUser()
   }
   const loginWayPhone = (e) => {

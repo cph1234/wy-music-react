@@ -20,7 +20,7 @@ export const HeaderWrapper = styled.div`
     position:absolute;
     top:${window.innerHeight / 2 - 186}px;
     left:${window.innerWidth / 2 - 265}px;
-    z-index:99;
+    z-index:999;
     width: 530px;
     height: 372px;
     
