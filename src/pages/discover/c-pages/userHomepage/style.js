@@ -170,6 +170,9 @@ export const WrapperHomePage = styled.div`
     .record-list{
       border:1px solid #DCDCDC;
       .list-item{
+        &:hover{
+          background-color:rgb(238,238,238)
+        }
         display:flex;
         position:relative;
         height: 38px;
@@ -193,6 +196,7 @@ export const WrapperHomePage = styled.div`
             height: 17px;
             :hover{
               background-position: 0 -128px;
+              cursor: pointer;
             }
           }
         }
@@ -215,7 +219,7 @@ export const WrapperHomePage = styled.div`
           top:0;
           left: 582px;
           height: 38px;
-          background-color: rgba(238,248,254,0.6);
+          background-color: rgba(238,248,254);
           line-height:38px;
           color:#999;
           padding-left:10px;
@@ -230,6 +234,7 @@ export const WrapperHomePage = styled.div`
     }
   }
   .user-playlist{
+    /* width: 100%; */
     margin-top:60px;
     .title{
     height: 35px;
@@ -238,9 +243,13 @@ export const WrapperHomePage = styled.div`
     }
     .playlist-item{
       display:flex;
+      flex-wrap:wrap;
       font-size:12px;
       .cover-item{
-        padding-right:50px;
+        padding-right:49px;
+        &:nth-child(5n){
+          padding-right:0;
+        }
       }
     }
   }
@@ -253,9 +262,13 @@ export const WrapperHomePage = styled.div`
     }
     .playlist-item{
       display:flex;
+      flex-wrap:wrap;
       font-size:12px;
       .cover-item{
-        padding-right:50px;
+        padding-right:49px;
+        &:nth-child(5n){
+          padding-right:0;
+        }
       }
     }
   }

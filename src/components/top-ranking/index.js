@@ -4,7 +4,7 @@ import { getSizeImage } from '@/utils/format-utils'
 import { RankingWrapper } from './style'
 import { useDispatch } from 'react-redux';
 
-import { getCurrentSongAction, getLyricAction, getCurrentRankAction } from '../../pages/player/store/actionCreators'
+import { getCurrentSongAction, getLyricAction, getCurrentRankAction } from '@/pages/player/store/actionCreators'
 import { NavLink } from 'react-router-dom';
 
 export default memo(function PHTopRanking(props) {
@@ -12,7 +12,7 @@ export default memo(function PHTopRanking(props) {
   const { info, routeTo = "" } = props;
   // console.log(info);
   const tracks = (info && info.tracks) || [];
-
+  console.log(tracks);
   const playRank = () => {
     dispatch(getCurrentRankAction(tracks))
   }

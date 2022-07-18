@@ -3,11 +3,11 @@ export const SongListWrapper = styled.div`
   display:flex;
   background-position:0 0;
   background-repeat:repeat-y;
-  height: 3000px;
+  /* height: 3000px; */
 `
 export const LeftWrapper = styled.div`
   width: 709px;
-  height: 3000px;
+  /* height: 3000px; */
   .song-list-top{
     display:flex;
     padding:40px;

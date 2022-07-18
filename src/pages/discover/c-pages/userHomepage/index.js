@@ -2,6 +2,8 @@ import React, { memo, useEffect, useState } from 'react'
 import { shallowEqual, useDispatch } from 'react-redux'
 import { WrapperHomePage } from './style'
 import { getUserPlaylistAction, getUserRecordAction } from './store/actionCreators'
+import { getCurrentSongAction, getLyricAction} from '@/pages/player/store/actionCreators'
+// import { getSongListDetailAction }from '@/pages/discover/c-pages/song-list/store/actionCreators'
 import { useSelector } from 'react-redux'
 import { vipLevel } from '@/common/local-data'
 import { getSizeImage } from '@/utils/format-utils'
@@ -9,6 +11,7 @@ import { getSizeImage } from '@/utils/format-utils'
 import { city2 } from '@/common/city2'
 import classNames from 'classnames'
 import PHSongsCover from '@/components/songs-cover'
+import { NavLink } from 'react-router-dom'
 
 export default memo(function PHUserHomepage() {
   const [type, settype] = useState(1)
@@ -21,7 +24,8 @@ export default memo(function PHUserHomepage() {
   const avatar = userInformation && userInformation.profile && userInformation.profile.avatarUrl
   const nickname = userInformation && userInformation.profile && userInformation.profile.nickname
   const uVipLevel = (userInformation && userInformation.level) || 1;
-  const vipUrl = vipLevel[uVipLevel - 1].url;
+  // const vipUrl = vipLevel[uVipLevel - 1].url;
+  const vipUrl = vipLevel[3].url;
   const eventCount = userInformation && userInformation.profile && userInformation.profile.eventCount;
   const follows = userInformation && userInformation.profile && userInformation.profile.follows;
   const followeds = userInformation && userInformation.profile && userInformation.profile.followeds;
@@ -31,7 +35,7 @@ export default memo(function PHUserHomepage() {
   if (type === 0) {
     userSongRecord = userRecord && userRecord.allData && userRecord.allData.slice(0, 10);
   }
-  console.log(userPlaylist)
+  // console.log(userPlaylist)
   let mineList = [];
   let otherList = [];
   const playlist = (userPlaylist && userPlaylist.playlist) || []
@@ -42,7 +46,7 @@ export default memo(function PHUserHomepage() {
       otherList.push(item)
     }
   }
-  console.log(mineList)
+  // console.log(mineList)
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getUserPlaylistAction(userId))
@@ -68,11 +72,15 @@ export default memo(function PHUserHomepage() {
     setchoice(false);
     settype(0)
   }
+  const playMusic = (item) => {
+    dispatch(getCurrentSongAction(item.song.id));
+    dispatch(getLyricAction(item.song.id));
+  }
   // console.log(userCity)
   // // const location=city2.map((item,index)=>{
   // //   return item.findIndex()
   // // })
-  // console.log(city2)
+  console.log(mineList)
   return (
     <WrapperHomePage className="wrap-v2" style={{}}>
       <div className="user-top">
@@ -136,7 +144,7 @@ export default memo(function PHUserHomepage() {
                 <li key={item.song.id} className="list-item">
                   <div className="li-left">
                     <span className="li-left-1">{index + 1}.</span>
-                    <span className="li-left-2 sprite_table"></span>
+                    <span className="li-left-2 sprite_table" onClick={e=>playMusic(item)}></span>
                   </div>
                   <div className="li-center">
                     <span className="li-song">{item.song.name}</span>
@@ -159,9 +167,14 @@ export default memo(function PHUserHomepage() {
         <div className="playlist-item">
           {
             mineList.map((item, index) => {
-              return <div key={index} className="cover-item">
-                <PHSongsCover info={item}></PHSongsCover>
-              </div>
+              return <NavLink to={{
+                pathname: "/discover/songlist",
+                id: item.id
+              }} key={item.id} className="cover-item">
+                <div>
+                  <PHSongsCover info={item}></PHSongsCover>
+                </div>
+              </NavLink>
             })
           }
         </div>
@@ -174,9 +187,14 @@ export default memo(function PHUserHomepage() {
         <div className="playlist-item">
           {
             otherList.map((item, index) => {
-              return <div key={index} className="cover-item">
-                <PHSongsCover info={item}></PHSongsCover>
-              </div>
+              return <NavLink to={{
+                pathname: "/discover/songlist",
+                id: item.id
+              }} key={item.id} className="cover-item">
+                <div>
+                  <PHSongsCover info={item}></PHSongsCover>
+                </div>
+              </NavLink>
             })
           }
         </div>

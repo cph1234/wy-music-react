@@ -4,7 +4,8 @@ export function getSongListDetail(id) {
   return request({
     url: "/playlist/detail",
     params: {
-      id
+      id,
+      cookie: localStorage.getItem("cookie")
     }
   })
 }
