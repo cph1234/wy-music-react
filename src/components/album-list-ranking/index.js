@@ -4,7 +4,7 @@ import { formatMinuteSecond } from '@/utils/format-utils';
 import classNames from 'classnames';
 
 export default memo(function PHAlbumListRanking(props) {
-
+  window.scrollTo(0, 0);
   const info = props && props.info;
   // console.log(info);
   let labelX = "0px";

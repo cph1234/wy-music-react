@@ -22,7 +22,7 @@ export function getArtistList(type, area, initial) {
       type,
       area,
       initial,
-      limit:100
+      limit: 100
     }
   })
 }
@@ -40,7 +40,8 @@ export function getArtists(id) {
   return request({
     url: "/artists",
     params: {
-      id
+      id,
+      cookie: localStorage.getItem('cookie')
     }
   })
 }
@@ -49,18 +50,20 @@ export function getArtistMv(id) {
   return request({
     url: "/artist/mv",
     params: {
-      id
+      id,
+      cookie: localStorage.getItem('cookie')
     }
   })
 }
 //歌手专辑
-export function getArtistAlbum(id,limit,offset) {
+export function getArtistAlbum(id, limit, offset) {
   return request({
     url: "/artist/album",
     params: {
       id,
       limit,
-      offset
+      offset,
+      cookie: localStorage.getItem('cookie')
     }
   })
 }
@@ -69,7 +72,8 @@ export function getSimiArtist(id) {
   return request({
     url: "/simi/artist",
     params: {
-      id
+      id,
+      cookie: localStorage.getItem('cookie')
     }
   })
 }

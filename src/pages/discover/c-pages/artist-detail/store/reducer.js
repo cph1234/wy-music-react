@@ -6,7 +6,7 @@ const initState = Map({
   artistMv: {},
   artistAlbum: {},
   artistDesc: {},
-  simiArtist:{}
+  simiArtist:[]
 })
 
 function reducer(state = initState, action) {

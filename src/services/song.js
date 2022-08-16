@@ -19,7 +19,8 @@ export function getSongCategoryList(cat = "全部", offset = 0, limit = 35) {
     params: {
       cat,
       limit,
-      offset
+      offset,
+      cookie: localStorage.getItem('cookie')
     }
   })
 }

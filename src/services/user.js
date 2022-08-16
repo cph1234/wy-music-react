@@ -19,7 +19,7 @@ export function getUserRecord(uid, type) {
     params: {
       uid,
       type,
-      cookie: localStorage.getItem("cookie"),
+      cookie: localStorage.getItem("cookie")
     }
   })
 }

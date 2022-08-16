@@ -161,7 +161,7 @@ export default memo(function PHPlayer() {
             </div>
             <div className="progress">
               <Slider defaultValue={30}
-                className="sprite_icon"
+                className="statbar"
                 value={progress}
                 onChange={sliderChange}
                 onAfterChange={sliderAfterChange} />

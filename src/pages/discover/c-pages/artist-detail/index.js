@@ -1,6 +1,6 @@
 import React, { memo, useState } from 'react'
 import { WrapperAtistDetail, WrapperLeft, WrapperRight } from './style'
-import { getArtistsAction, getArtistMvAction, getArtistAlbumAction, getArtistDescAction } from './store/actionCreators'
+import { getArtistsAction, getArtistMvAction, getArtistAlbumAction, getArtistDescAction, getSimiArtistAction } from './store/actionCreators'
 import { shallowEqual, useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
@@ -18,15 +18,19 @@ export default memo(function PHArtistDetail(props) {
   const [art2, setart2] = useState(false);
   const [art3, setart3] = useState(false);
   const [art4, setart4] = useState(false);
-  const { artists, artistMv, artistAlbum, artistDesc, artistList } = useSelector(state => ({
+  const { artists, artistMv, artistAlbum, artistDesc, simiArtist } = useSelector(state => ({
     artists: state.get("artistDetail").get("artists"),
     artistMv: state.get("artistDetail").get("artistMv"),
     artistAlbum: state.get("artistDetail").get("artistAlbum"),
     artistDesc: state.get("artistDetail").get("artistDesc"),
-    artistList: state.get("artist").get("artistList"),
+    simiArtist: state.get("artistDetail").get("simiArtist"),
   }), shallowEqual)
-  const id = props.location.id;
-  const artistInformation = props.location.artistInformation;
+  const location = props.location.id ? props.location : JSON.parse(localStorage.getItem("location"));
+  // console.log(JSON.parse(localStorage.getItem("location")))
+  console.log(location);
+  localStorage.setItem("location", JSON.stringify(location))
+  const id = location.id;
+  const artistInformation = location.artistInformation;
   // console.log(artistInformation)
   const dispatch = useDispatch()
   useEffect(() => {
@@ -34,6 +38,7 @@ export default memo(function PHArtistDetail(props) {
     dispatch(getArtistMvAction(id));
     dispatch(getArtistAlbumAction(id));
     dispatch(getArtistDescAction(id));
+    dispatch(getSimiArtistAction(id));
   }, [dispatch, id])
   const artistName = artistInformation.name;
   const alias = artistInformation.alias[0];
@@ -42,7 +47,8 @@ export default memo(function PHArtistDetail(props) {
   const hotAlbums = artistAlbum && artistAlbum.hotAlbums;
   const mvs = artistMv && artistMv.mvs;
   const introduction = artistDesc.introduction;
-  const hotArtists = artistList.slice(0, 6);
+  console.log(simiArtist);
+  const hotArtists = simiArtist && simiArtist.slice(0, 6);
   const artist1 = () => {
     setart1(true)
     setart2(false)
@@ -79,7 +85,7 @@ export default memo(function PHArtistDetail(props) {
             <img src={`${avatarUrl}?param=640y300`} alt="" />
             <div className="bgcolor"></div>
             <div className="avatar-btn">
-              <NavLink to={{ pathname: "/discover/personpage", accountId: artistInformation.accountId, artistInformation: artistInformation}}>
+              <NavLink to={{ pathname: "/discover/personpage", accountId: artistInformation.accountId, artistInformation: artistInformation }}>
                 <button className="avatar-btn-1 sprite_icon"></button>
               </NavLink>
               <button className="avatar-btn-2 sprite_icon"></button>

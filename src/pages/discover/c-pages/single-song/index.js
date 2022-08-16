@@ -20,14 +20,17 @@ export default memo(function PHSingleSong(props) {
   const { lyricsList, releventInformation } = useSelector(state => ({
     lyricsList: state.get("player").get("lyricsList"),
     releventInformation: state.get("player").get("releventInformation"),
-  }),shallowEqual);
+  }), shallowEqual);
   const { songDetail, simiSong, songComments } = useSelector(state => ({
     songDetail: state.get("singleSong").get("songDetail"),
     simiSong: state.get("singleSong").get("simiSong"),
     songComments: state.get("singleSong").get("songComments"),
   }))
   // console.log(songComments)
-  const location = props.location;
+  const location = props.location.ids ? props.location : JSON.parse(localStorage.getItem("location"));
+  // console.log(JSON.parse(localStorage.getItem("location")))
+  // console.log(location);
+  localStorage.setItem("location", JSON.stringify(location))
   const ids = location.ids;
   const simiSongs = simiSong && simiSong.songs;
   const dispatch = useDispatch()
@@ -98,7 +101,7 @@ export default memo(function PHSingleSong(props) {
               }
             </div>
             <button onClick={e => expand()} style={{ color: "#0c73c2" }}>{lyricContent}</button>
-            <div className='comments'><PHComment info={songComments} id={ids} type={0}/></div>
+            <div className='comments'><PHComment info={songComments} id={ids} type={0} /></div>
           </div>
         </div>
         <PHPagination

@@ -16,7 +16,8 @@ export function getPlaylistComment(id, offset, limit) {
     params: {
       id,
       limit,
-      offset
+      offset,
+      cookie: localStorage.getItem('cookie')
     }
   })
 }

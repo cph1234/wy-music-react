@@ -17,11 +17,15 @@ export default memo(function PHSongList(props) {
     songListComments: state.get("songList").get("songListComments")
   }), shallowEqual)
   // console.log(songCategoryList)
+  const location = props.location.id ? props.location : JSON.parse(localStorage.getItem("location"));
+  // console.log(JSON.parse(localStorage.getItem("location")))
+  // console.log(location);
+  localStorage.setItem("location", JSON.stringify(location))
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getSongListDetailAction(props.location.id));
-    dispatch(getPlaylistCommentAction(props.location.id));
-  }, [dispatch, props.location.id])
+    dispatch(getSongListDetailAction(location.id));
+    dispatch(getPlaylistCommentAction(location.id));
+  }, [dispatch, location.id])
   // console.log(props.location)
   let playlists = songCategoryList && songCategoryList.playlists;
   const playlist = songListDetail && songListDetail.playlist;

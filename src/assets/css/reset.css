@@ -86,6 +86,12 @@ body, textarea, select, input, button {
   background: url(../img/banner_sprite.png) no-repeat 0 9999px;
 }
 
+
+.statbar {
+  background: url(../img/statbar.png) no-repeat 0 9999px;
+}
+
+
 .platform {
   background: url(../img/platform.png) no-repeat 0 9999px;
 }

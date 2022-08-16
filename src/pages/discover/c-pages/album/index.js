@@ -20,6 +20,7 @@ export default memo(function PHAlbum() {
   useEffect(() => {
     dispatch(getHotAlbumsAction());
     dispatch(getTopAlbumsAction());
+    
   }, [dispatch])
   const onChange = (page, pageSize) => {
     setcurrentPage(page);

@@ -54,7 +54,7 @@ export const getSimiArtistAction = (id) => {
     getSimiArtist(id).then(res => {
       console.log(id)
       console.log(res)
-      dispatch(changeSimiArtistAction(res))
+      dispatch(changeSimiArtistAction(res.artists))
     })
   }
 }

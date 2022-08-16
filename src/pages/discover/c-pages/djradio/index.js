@@ -36,7 +36,7 @@ export default memo(function PHDjradio() {
         {
           icons.map((item, index) => {
             return (
-              <a href="todo" className={classNames("item")}>
+              <a href="todo" className={classNames("item")} key={item.id}>
                 <div className={classNames("img", item.class)}></div>
                 <div className={classNames("content", item.class === "icon20" ? "color-blue" : "")}>{item.name}</div>
               </a>
@@ -109,7 +109,7 @@ export default memo(function PHDjradio() {
         {
           recommendType && recommendType.map((item, index) => {
             return (
-              <div className="item">
+              <div className="item" key={item.djRadios.id}>
                 <div className="item-title">
                   <div className="title-left">
                     {item.djRadios[0].category}
@@ -122,7 +122,7 @@ export default memo(function PHDjradio() {
                   {
                     item.djRadios.slice(0, 4).map((iten, indey) => {
                       return (
-                        <div className="iten">
+                        <div className="iten" key={iten.id}>
                           <img src={getSizeImage(iten.intervenePicUrl, 120)} alt="" />
                           <div className="iten-content">
                             <div className="first-line">{iten.name}</div>

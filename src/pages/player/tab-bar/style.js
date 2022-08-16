@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import statbar from '@/assets/img/statbar.png'
+import iconall from '@/assets/img/iconall.png'
 
 export const PlayerWrapper = styled.div`
   position:fixed;
@@ -84,20 +86,27 @@ export const CenterWrapper = styled.div`
 
         .ant-slider-rail {
           height: 9px;
-          background: url(${require("@/assets/img/progress_bar.png").default}) right 0;
+          background:url(${statbar})
+          /* background-position: 0 0; */
+          /* background: url(${require("@/assets/img/progress_bar.png").default}) right 0; */
         }
 
         .ant-slider-track {
           height: 9px;
-          background: url(${require("@/assets/img/progress_bar.png").default}) left -66px;
+          background:url(${statbar}) left -66px;
+          /* background-position: 0 -66px;
+          background-color:rgb(199,12,12) */
+          /* background: url(${require("@/assets/img/progress_bar.png").default}) left -66px; */
         }
 
         .ant-slider-handle {
           width: 22px;
           height: 24px;
           border: none;
-          margin-top: -7px;
-          background: url(${require("@/assets/img/sprite_icon.png").default}) 0 -250px;
+          margin-top: -8px;
+          background:url(${iconall}) 0 -280px;
+          /* background-position: 0 -250px; */
+          /* background: url(${require("@/assets/img/sprite_icon.png").default}) 0 -250px; */
         }
       }
 
