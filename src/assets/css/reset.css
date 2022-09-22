@@ -54,7 +54,7 @@ body, textarea, select, input, button {
 .text-nowrap {
   /* 规定段落中的文本不进行换行 */
   white-space: nowrap;
-  /* 规定当文本溢出包含元素时发生的事情 */
+  /* 规定当文本溢出包含元素时显示省略标记 */
   text-overflow: ellipsis;
   /* 规定当内容溢出元素框时发生的事情 */
   overflow: hidden;

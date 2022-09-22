@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom'
 import { renderRoutes } from 'react-router-config'
 
 export default memo(function PHDiscover(props) {
+  //取出子路由
   const { route } = props;
   return (
     <DiscoverWrapper>
