@@ -16,7 +16,7 @@ export default memo(function PHComment(props) {
   const comment = props && props.info;
   const id = props && props.id;
   const type = props && props.type;
-  console.log(comment)
+  // console.log(comment)
   // const comments = comment && comment.comments;
   const normalComments = comment && comment.comments;
   // const hotComments = comment && comment.hotComments;
@@ -25,7 +25,7 @@ export default memo(function PHComment(props) {
   const commentLike = (index) => {
     const target = normalComments[index]
     const t = target.liked === false ? 1 : 0;
-    console.log(id, target.commentId, t, type)
+    // console.log(id, target.commentId, t, type)
     dispatch(getCommentLikeAction(id, target.commentId, t, type))
   }
   const commentSend = () => {
@@ -64,7 +64,9 @@ export default memo(function PHComment(props) {
         <div className="wc-title">精彩评论</div>
         {
           normalComments && normalComments.map((item, index) => {
-            const level = item.user.vipRights && (item.user.vipRights.redVipLevel - 1);
+            let level = item.user.vipRights && (item.user.vipRights.redVipLevel - 1);
+            // const level = 1
+            if(level===-1) level=1
             const levelImg = level ? vipLevel[level].url : "";
             const avatarDetail = item.user.avatarDetail && item.user.avatarDetail.identityIconUrl ? item.user.avatarDetail.identityIconUrl : "";
             const position = item.liked ? "-170px 0" : "-150px 0";

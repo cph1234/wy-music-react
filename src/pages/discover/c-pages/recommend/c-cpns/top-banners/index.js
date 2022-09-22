@@ -45,6 +45,7 @@ export default memo(function PHTopBanners() {
             <div className='download btn'></div>
           </RightWrapper>
           <BannerControl>
+            {/* 控制左右的翻页 */}
             <button className="btn left banner_sprite" onClick={e => bannerRef.current.prev()}></button>
             <button className="btn right banner_sprite" onClick={e => bannerRef.current.next()}></button>
           </BannerControl>

@@ -217,6 +217,14 @@ export const select = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L
 
 export const vipLevel = [
   {
+    level: -1,
+    url: "https://p6.music.126.net/obj/wo3DlcOGw6DClTvDisK1/4213922817/9124/a83c/7eb7/6d7d81b608bfb56d7fb286bd8eb72346.png"
+  },
+  {
+    level: 0,
+    url: "https://p6.music.126.net/obj/wo3DlcOGw6DClTvDisK1/4213922817/9124/a83c/7eb7/6d7d81b608bfb56d7fb286bd8eb72346.png"
+  },
+  {
     level: 1,
     url: "https://p6.music.126.net/obj/wo3DlcOGw6DClTvDisK1/4213922817/9124/a83c/7eb7/6d7d81b608bfb56d7fb286bd8eb72346.png"
   },
