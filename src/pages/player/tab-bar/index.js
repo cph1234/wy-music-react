@@ -44,7 +44,7 @@ export default memo(function PHPlayer() {
     })
   }, [currentSong])
   const audioRef = useRef();
-
+  // 播放
   const playMusic = useCallback(() => {
     isPlaying ? audioRef.current.pause() : audioRef.current.play();
     setisPlaying(!isPlaying);
@@ -55,6 +55,7 @@ export default memo(function PHPlayer() {
     if (!isChanging) {
       //e.target.currentTime单位是秒
       setcurrentTime(e.target.currentTime * 1000);
+      //进度条
       setprogress(currentTime / duration * 100);
     }
     let currentIndex = 0;
@@ -79,13 +80,13 @@ export default memo(function PHPlayer() {
   }
 
 
-
+  // 拖动滑条位置
   const sliderChange = useCallback((value) => {
     setprogress(value);
     setisChanging(true);
     setcurrentTime(value / 100 * duration)
   }, [duration])
-
+  //拖动结束
   const sliderAfterChange = useCallback((value) => {
     audioRef.current.currentTime = value / 100 * duration / 1000;
     setisChanging(false);

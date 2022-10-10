@@ -14,10 +14,10 @@ export const getCurrentSongAction = (ids) => {
       getSongDetail(ids).then(res => {
         const song = res.songs && res.songs[0];
         if (!song) return;
-
+        // 将新歌曲加入列表
         const newPlayList = [...playList];
         newPlayList.push(song);
-
+        //更新redux中的值
         dispatch(changeCurrentSongIndexAction(newPlayList.length - 1));
         dispatch(changePlayListAction(newPlayList));
         dispatch(changeCurrentSongAction(song))
